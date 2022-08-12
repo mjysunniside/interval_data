@@ -4,12 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table, tr, td {
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+        h1 {
+            text-align: center;
+        }
+        .button-container {
+            width: 100%;
+            margin: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .rates-container {
+            margin: 0 10px;
+        }
+        .button {
+            margin-left: 10px;
+        }
+        .table-area {
+            width: 80%;
+            min-height: 600px;
+            margin: 15px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
     <title>Other</title>
 </head>
 <body>
-    <h1>Try again</h1>
-    <input type="file" id="file-input" />
-    <button class="button">Go</button>
-    <script src="./other.js"></script>
+    <h1>PG&E Interval Data Calculator</h1>
+    <div class="button-container">
+        <input type="file" id="file-input" />
+        <div class="rates-container">
+            <label for="rate">Rate Schedule:</label>
+            <input type="text" list="rates" id="rate" name="rate">
+            <datalist id="rates">
+                <option value="E-TOU-C"></option>
+                <option value="E-TOU-D"></option>
+            </datalist>
+        </div>
+        <button class="button">Run Analysis</button>
+
+        <button class="button-test">Hi</button>
+    </div>
+
+    <div class="table-area"></div>
+
+    <script type="module" src="./other.js"></script>
 </body>
 </html>
