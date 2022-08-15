@@ -1,6 +1,8 @@
 import { readFilePromise } from "./lib/readSingleFile.js"
-import { parseXML as parseXMLNew, createStructureXML } from "./lib/parseXML.js"
+import { parseXML as parseXMLNew, createIntervalsXML } from "./lib/parseXML.js"
 import { createTable } from "./lib/createTable.js"
+import { Structure } from "./lib/Structure.js"
+import { Rate } from "./lib/Rate.js"
 
 
 const button = document.querySelector('button')
@@ -14,18 +16,28 @@ async function testMain() {
   try {
     let file = fileInput.files[0]
     let fileRead = await readFilePromise(file)
-    let universalStructure
+    let rate = new Rate('E-TOU-C')
+    let universalStructure = new Structure(rate)
     //xml case
     if(fileRead.type === 'xml'){
       let xmlDoc = await parseXMLNew(fileRead.contents)
-      console.log(xmlDoc) 
-      universalStructure = createStructureXML(xmlDoc)
-      console.log(universalStructure[0])
+      console.log(xmlDoc)
+      //large array of interval objects to streamline this for efficiency i should not be adding an extra create structure step
+      let intervalArray = createIntervalsXML(xmlDoc)
+      // filter intervalArray by month to get monthly values in universalStructure
+      for(let i=0 ; i<=11 ; i++) {
+        let monthArray = intervalArray.filter(interval => {
+          return interval.timeStamp.getMonth() === i
+        })
+        universalStructure.addMonth(monthArray)
+      }
     }
     //csv case
     if(fileRead.type === 'csv') {
 
     }
+    //now we have the structure
+    renderTable(universalStructure)
     
   } catch (error) {
     console.log(error)
