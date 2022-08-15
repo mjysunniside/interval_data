@@ -1,6 +1,6 @@
 import { readFilePromise } from "./lib/readSingleFile.js"
 import { parseXML as parseXMLNew, createIntervalsXML } from "./lib/parseXML.js"
-import { createTable } from "./lib/createTable.js"
+import { createTable, renderTable } from "./lib/createTable.js"
 import { Structure } from "./lib/Structure.js"
 import { Rate } from "./lib/Rate.js"
 
