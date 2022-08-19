@@ -1,16 +1,16 @@
 
-const date = new Date(1627196400*1000)
+//  const date = new Date(1627196400*1000)
 
-//const dString = date.toLocaleString()
+// console.log(date)
+const timeString = '46:00'
+console.log(`allo ${timeString.substring(0,2)}`)
 
-console.log(date);
 
-let month = date.getMonth()
-let year = date.getFullYear()
+let date = new Date('2020-08-29')
+//date.setHours(times)
+console.log(date.getHours())
 
-//console.log(typeof year)
+date.setHours('17')
 
-let endDate = new Date(year, month +1, 0).getDate()
-
-console.log(endDate)
+console.log(date.getHours())
 
