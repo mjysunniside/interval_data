@@ -4,6 +4,8 @@ import { createTable, renderTable } from "./lib/createTable.js"
 import { Structure } from "./lib/Structure.js"
 import { Rate } from "./lib/Rate.js"
 import { findHeaders, createIntervalsCSV } from "./lib/parseCSV.js"
+import { MissingFileError } from "./errors/MissingFile.js"
+import { createCornerPopup } from "./lib/popup.js"
 
 
 const button = document.querySelector('button')
@@ -16,6 +18,11 @@ runButton.addEventListener('click', main)
 async function main() {
   try {
     let file = fileInput.files[0]
+    if(!file) {
+      throw new MissingFileError('Please provide a valid PG&E interval data file')
+    } else {
+      fileInput.value = null
+    }
     let fileRead = await readFilePromise(file)
     let rate = new Rate('E-TOU-C')
     let universalStructure = new Structure(rate)
@@ -38,7 +45,7 @@ async function main() {
       let intervalArray = createIntervalsCSV(initialSplit.data)
       //not sure why this is happening more tests needed
       let undefinedLastItem = intervalArray.pop()
-      console.log(undefinedLastItem)
+      
       
       for(let i=0 ; i<=11 ; i++) {
         let monthArray = intervalArray.filter(interval => {
@@ -52,7 +59,10 @@ async function main() {
     renderTable(universalStructure)
     
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+    if(error instanceof MissingFileError) {
+      createCornerPopup(error.message)
+    }
   }
   
 }

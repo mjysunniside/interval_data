@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="test.css">
+    <title>Other</title>
+</head>
+
+<body>
+    <h1>PG&E Interval Data Calculator</h1>
+    <div class="button-container">
+        <input type="file" id="file-input" accept="application/xml, text/xml, application/csv, text/csv" />
+        <div class="rates-container">
+            <label for="rate">Rate Schedule:</label>
+            <input type="text" list="rates" id="rate" name="rate">
+            <datalist id="rates">
+                <option value="E-TOU-C"></option>
+                <option value="E-TOU-D"></option>
+            </datalist>
+        </div>
+        <button class="button" id="run-analysis">Run Analysis</button>
+
+        <!-- <button class="button-test">Hi</button> -->
+    </div>
+
+    <div class="table-area"></div>
+        
+    <div class="popup">
+        <div class="closebar"></div>
+        <div class="close">&times</div>
+        <div class="header"></div>
+        <div class="message"></div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>
