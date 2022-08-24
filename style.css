@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+table,
+tr,
+td {
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+table {
+    margin: 5px 20px;
+}
+
+td {
+    padding: 2px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.button-container {
+    width: 100%;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.rates-container {
+    margin: 0 10px;
+}
+
+.button {
+    margin-left: 10px;
+}
+
+.table-area {
+    width: 80%;
+    min-height: 600px;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    min-height: 150px;
+    min-width: 300px;
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: flex;
+    /* display: flex; */
+    /* this was copy paste */
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.close:hover {
+    color: green;
+    cursor: pointer;
+}
