@@ -1,6 +1,7 @@
 import { readFilePromise } from "./lib/readSingleFile.js"
 import { parseXML, createIntervalsXML } from "./lib/parseXML.js"
-import { createTable, renderTable } from "./lib/createTable.js"
+import { renderTable } from "./lib/createTable.js"
+import { createPieChart } from "./lib/pie.js"
 import { Structure } from "./lib/Structure.js"
 import { Rate } from "./lib/Rate.js"
 import { findHeaders, createIntervalsCSV } from "./lib/parseCSV.js"
@@ -56,7 +57,8 @@ async function main() {
       
     }
     //now we have the structure
-    renderTable(universalStructure)
+    let analysisArea = renderTable(universalStructure)
+    createPieChart(universalStructure, analysisArea)
     
   } catch (error) {
     console.log(error.message)
