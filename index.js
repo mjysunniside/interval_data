@@ -61,7 +61,7 @@ async function main() {
     createPieChart(universalStructure, analysisArea)
     
   } catch (error) {
-    console.log(error.message)
+    console.log(error)
     if(error instanceof MissingFileError) {
       createCornerPopup(error.message)
     }
