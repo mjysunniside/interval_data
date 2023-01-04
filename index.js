@@ -12,6 +12,7 @@ import { createCornerPopup } from "./lib/popup.js"
 const button = document.querySelector('button')
 const fileInput = document.getElementById('file-input')
 const tableArea = document.querySelector('.table-area')
+const rateInput = document.getElementById('rate')
 
 const runButton = document.querySelector('.button')
 runButton.addEventListener('click', main)
@@ -25,7 +26,12 @@ async function main() {
       fileInput.value = null
     }
     let fileRead = await readFilePromise(file)
-    let rate = new Rate('E-TOU-C')
+    //let rate = new Rate('E-TOU-C')
+    let rate = new Rate(rateInput.value)
+    console.log(rateInput.value)
+    console.log(rate.startPeak)
+    console.log(rate.endPeak)
+    
     let universalStructure = new Structure(rate)
     //xml case
     if(fileRead.type === 'xml'){
