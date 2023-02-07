@@ -90,7 +90,7 @@ h1 {
     min-width: 300px;
     border: 3px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    display: flex;
+    /* display: flex; */
     /* display: flex; */
     /* this was copy paste */
     -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -110,6 +110,24 @@ h1 {
 }
 
 .close:hover {
-    color: green;
+    color: white;
     cursor: pointer;
+}
+
+.header {
+    background-color: red;
+    height: 1.7rem;
+    width: 100%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 7px;
+}
+
+.popup-title {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.5rem;
+}
+
+.popup-message {
+    padding: 0 10px;
 }
